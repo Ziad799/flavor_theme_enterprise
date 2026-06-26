@@ -1,0 +1,654 @@
+// Theme Flavor Enterprise — Dark Mode
+// Reassign CSS variables when body.tf-dark is active
+
+body.tf-dark,
+body.tf-dark .o_web_client {
+    --tf-primary: #8487FF;
+    --tf-primary-soft: #1E1F3A;
+    --tf-on-primary: #0C0D17;
+    --tf-secondary: #6366F1;
+    --tf-accent: #22D3EE;
+    --tf-accent-soft: #102A30;
+    --tf-bg: #0C0D17;
+    --tf-surface: #161827;
+    --tf-surface-2: #1D1F30;
+    --tf-text: #E7E8F4;
+    --tf-text-muted: #9A9DB5;
+    --tf-border: #272A3C;
+
+    // Override Odoo's own color vars
+    --body-bg: var(--tf-bg);
+    --body-color: var(--tf-text);
+    --o-webclient-background-color: var(--tf-bg);
+    --o-view-background-color: var(--tf-surface);
+    --NavBar-entry-backgroundColor: var(--tf-surface);
+    --NavBar-entry-backgroundColor--hover: var(--tf-primary-soft);
+    --NavBar-entry-color: var(--tf-text-muted);
+    --NavBar-entry-color--hover: var(--tf-primary);
+    --NavBar-brand-color: var(--tf-text);
+    --link-color: var(--tf-primary);
+    --link-hover-color: var(--tf-secondary);
+    --o-stat-button-color: var(--tf-accent);
+    --o-stat-text-color: var(--tf-accent);
+}
+
+body.tf-dark {
+    background-color: var(--tf-bg) !important;
+    color: var(--tf-text) !important;
+
+    // === Global ===
+    .o_web_client {
+        background-color: var(--tf-bg) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Navbar ===
+    .o_main_navbar,
+    nav.o_main_navbar {
+        background: var(--tf-surface) !important;
+        border-bottom-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        .o_menu_brand,
+        .o_navbar_breadcrumbs,
+        .o_navbar_breadcrumbs .btn {
+            color: var(--tf-text) !important;
+        }
+
+        .o_menu_sections .o_nav_entry,
+        .o_menu_sections > li > a,
+        .o_menu_sections > li > button,
+        .o_menu_sections .dropdown-toggle {
+            color: var(--tf-text-muted) !important;
+
+            &:hover, &.show {
+                color: var(--tf-primary) !important;
+                background-color: var(--tf-primary-soft) !important;
+            }
+        }
+
+        .o_menu_systray .o-dropdown .dropdown-toggle {
+            color: var(--tf-text-muted) !important;
+        }
+    }
+
+    // === Sidebar ===
+    .tf-sidebar {
+        background-color: var(--tf-surface) !important;
+        border-right-color: var(--tf-border) !important;
+    }
+
+    // === Content areas ===
+    .o_content,
+    .o_action_manager {
+        background-color: var(--tf-bg) !important;
+    }
+
+    // === Control panel (search, filters bar) ===
+    .o_control_panel {
+        background-color: var(--tf-surface) !important;
+        border-bottom-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        .o_searchview {
+            background-color: var(--tf-surface-2) !important;
+            border-color: var(--tf-border) !important;
+            color: var(--tf-text) !important;
+
+            .o_searchview_input {
+                color: var(--tf-text) !important;
+            }
+        }
+
+        .btn, .o_cp_action_menus .dropdown-toggle {
+            color: var(--tf-text-muted) !important;
+            border-color: var(--tf-border) !important;
+        }
+
+        .breadcrumb-item {
+            color: var(--tf-text-muted) !important;
+
+            &.active { color: var(--tf-text) !important; }
+            a { color: var(--tf-primary) !important; }
+        }
+    }
+
+    // === List view ===
+    .o_list_view {
+        .o_list_renderer {
+            background-color: var(--tf-surface) !important;
+            border-color: var(--tf-border) !important;
+        }
+
+        table {
+            thead th {
+                background-color: var(--tf-surface-2) !important;
+                color: var(--tf-text-muted) !important;
+                border-bottom-color: var(--tf-border) !important;
+            }
+
+            tbody tr {
+                &:hover {
+                    background-color: var(--tf-primary-soft) !important;
+                }
+
+                td {
+                    color: var(--tf-text) !important;
+                    border-bottom-color: var(--tf-border) !important;
+                }
+            }
+        }
+    }
+
+    // === Form view ===
+    .o_form_view {
+        background-color: var(--tf-bg) !important;
+
+        .o_form_sheet_bg { background-color: var(--tf-bg) !important; }
+
+        .o_form_sheet {
+            background-color: var(--tf-surface) !important;
+            border-color: var(--tf-border) !important;
+        }
+
+        .o_form_statusbar {
+            background-color: var(--tf-surface) !important;
+            border-bottom-color: var(--tf-border) !important;
+        }
+
+        .o_form_label { color: var(--tf-text-muted) !important; }
+
+        .o_field_widget input:not([type="radio"]):not([type="checkbox"]),
+        .o_field_widget textarea,
+        .o_field_widget select {
+            background-color: var(--tf-surface-2) !important;
+            border-color: var(--tf-border) !important;
+            color: var(--tf-text) !important;
+        }
+
+        .o_field_widget .o_input {
+            color: var(--tf-text) !important;
+        }
+
+        // Notebook tabs
+        .o_notebook .nav-tabs {
+            border-bottom-color: var(--tf-border) !important;
+
+            .nav-link {
+                color: var(--tf-text-muted) !important;
+
+                &.active {
+                    color: var(--tf-primary) !important;
+                    border-bottom-color: var(--tf-primary) !important;
+                    background-color: transparent !important;
+                }
+            }
+        }
+    }
+
+    // === Kanban ===
+    .o_kanban_record {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Dashboard / Spreadsheet ===
+    .o_dashboard_view,
+    .o_spreadsheet_dashboard,
+    .o_spreadsheet_dashboard_action {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .o_dashboard_view .o_figure,
+    .o_spreadsheet_dashboard .o_figure,
+    .o_dashboard_action .o_graph_renderer,
+    .o_dashboard_action .o_pivot_renderer,
+    .o_spreadsheet_dashboard .o-spreadsheet {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .o-spreadsheet {
+        --o-background: var(--tf-surface) !important;
+        --o-color: var(--tf-text) !important;
+        --o-border-color: var(--tf-border) !important;
+
+        .o-topbar, .o-bottom-bar {
+            background-color: var(--tf-surface) !important;
+            color: var(--tf-text) !important;
+        }
+    }
+
+    // Spreadsheet cells / grid
+    .o-spreadsheet .o-grid-overlay,
+    .o-spreadsheet .o-grid,
+    .o-spreadsheet canvas {
+        background-color: var(--tf-surface) !important;
+    }
+
+    // Dashboard search panel
+    .o_dashboard_view .o_search_panel,
+    .o_spreadsheet_dashboard .o_search_panel {
+        background-color: var(--tf-surface) !important;
+        border-right-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        a { color: var(--tf-primary) !important; }
+    }
+
+    // === Dropdowns ===
+    .dropdown-menu {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        .dropdown-item {
+            color: var(--tf-text) !important;
+
+            &:hover, &:focus {
+                background-color: var(--tf-primary-soft) !important;
+                color: var(--tf-primary) !important;
+            }
+        }
+    }
+
+    // === Chatter ===
+    .o_chatter_container, .o-mail-Chatter {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .o-mail-Composer {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+
+        textarea { color: var(--tf-text) !important; }
+    }
+
+    .o-mail-Message {
+        border-bottom-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Discuss sidebar ===
+    .o-mail-DiscussSidebar {
+        background-color: var(--tf-surface) !important;
+        border-right-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Modals ===
+    .modal-content {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Search panel ===
+    .o_search_panel {
+        background-color: var(--tf-surface) !important;
+        border-right-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Pager ===
+    .o_pager .o_pager_counter { color: var(--tf-text-muted) !important; }
+    .o_pager .o_pager_previous,
+    .o_pager .o_pager_next {
+        color: var(--tf-text-muted) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    // === Home menu ===
+    .o_home_menu, .o_app_switcher {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .o_home_menu .o_apps .o_app .o_app_name {
+        color: var(--tf-text) !important;
+    }
+
+    // === Buttons ===
+    .btn-secondary, .btn-outline-secondary {
+        color: var(--tf-text) !important;
+        border-color: var(--tf-border) !important;
+        background-color: var(--tf-surface-2) !important;
+
+        &:hover {
+            background-color: var(--tf-primary-soft) !important;
+            color: var(--tf-primary) !important;
+        }
+    }
+
+    // === Filter tags ===
+    .o_searchview .o_searchview_facet {
+        background-color: var(--tf-primary-soft) !important;
+        color: var(--tf-primary) !important;
+
+        .o_searchview_facet_label {
+            background-color: var(--tf-primary) !important;
+            color: var(--tf-on-primary) !important;
+        }
+    }
+
+    // === Badge overrides ===
+    .badge.text-bg-info, .badge.text-bg-secondary {
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Settings ===
+    .o_base_settings_view .o_base_settings {
+        background-color: var(--tf-bg) !important;
+    }
+
+    // === Fix #1: Breadcrumb light bg ===
+    .breadcrumb {
+        --breadcrumb-bg: transparent !important;
+        background-color: transparent !important;
+    }
+
+    // === Fix #2: Notebook tab bar light bg ===
+    .o_notebook .nav,
+    .o_notebook .nav-tabs {
+        background-color: transparent !important;
+    }
+
+    // === Fix #3: List table body cells light bg ===
+    .o_list_renderer .o_list_table {
+        --table-bg: var(--tf-surface) !important;
+    }
+
+    .o_list_renderer .o_list_table.o_list_table_grouped .o_group_header {
+        --table-bg: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // === Fix #4: Stat button values/icons indigo fallback ===
+    .o-form-buttonbox {
+        --o-stat-button-color: var(--tf-primary) !important;
+        --o-stat-text-color: var(--tf-primary) !important;
+    }
+
+    .o-form-buttonbox .oe_stat_button .o_button_icon {
+        color: var(--tf-primary) !important;
+    }
+
+    .o-form-buttonbox .oe_stat_button .o_stat_value,
+    .o-form-buttonbox .oe_stat_button .o_stat_info .o_stat_value {
+        color: var(--tf-primary) !important;
+    }
+
+    // === Fix #5: Chatter outer container light bg ===
+    .o-mail-ChatterContainer,
+    .o-mail-Form-chatter {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .o-mail-Chatter-top {
+        background-color: var(--tf-bg) !important;
+    }
+
+    // === Fix #6: btn-light (Save/Cancel) white bg ===
+    .btn-light,
+    .o_form_button_save,
+    .o_form_button_cancel {
+        --btn-bg: var(--tf-surface-2) !important;
+        --btn-border-color: var(--tf-border) !important;
+        --btn-color: var(--tf-text-muted) !important;
+        --btn-hover-bg: var(--tf-primary-soft) !important;
+        --btn-hover-color: var(--tf-primary) !important;
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text-muted) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    // === Fix #7: Typing dot white on dark ===
+    .o-mail-ImStatus .o-discuss-Typing-dot,
+    .o-mail-ThreadIcon .o-discuss-Typing-dot {
+        background-color: var(--tf-text-muted) !important;
+    }
+
+    // ── AUDIT: DATE PICKER / POPOVER ──
+    .o_popover.popover,
+    .o_datetime_picker {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+    .o_popover.popover .popover-arrow::after {
+        border-bottom-color: var(--tf-surface) !important;
+    }
+
+    // ── AUDIT: DISCUSS / MAIL ──
+    .o-mail-Thread,
+    .o-mail-DiscussContent-core {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .o-mail-DiscussSearch {
+        background-color: var(--tf-surface) !important;
+    }
+    .o-mail-DiscussSearch-inputContainer,
+    .o-mail-DiscussSearch input.form-control {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .o-mail-DiscussContent-header {
+        background-color: var(--tf-surface) !important;
+        border-bottom-color: var(--tf-border) !important;
+    }
+
+    .o-mail-Composer-bg,
+    .o-mail-Composer-inputContainer,
+    .o-mail-Composer-input,
+    .o-mail-Composer-quickActions {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .o-mail-Message-body,
+    .o-mail-Message-richBody,
+    .o-mail-Message-body p,
+    .o-mail-Message-trackingOld,
+    .o-mail-Message-trackingField {
+        color: var(--tf-text) !important;
+    }
+
+    .o-mail-Message-date,
+    .text-muted { color: var(--tf-text-muted) !important; }
+
+    .o_odoobot_command {
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .o-mail-NavigableList {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // ── AUDIT: SETTINGS ──
+    .settings_tab {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    .settings_tab .tab,
+    .settings_tab .app_name,
+    .settings_tab .icon {
+        color: var(--tf-text) !important;
+    }
+
+    .settings {
+        background-color: var(--tf-bg) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .o_settings_container h2 {
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    .settings .text-muted,
+    .settings small { color: var(--tf-text-muted) !important; }
+
+    // ── AUDIT: FORM LABELS ──
+    .o_cell.o_wrap_label,
+    .o_td_label {
+        color: var(--tf-text-muted) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    // ── AUDIT: LIST TABLE ──
+    .o_list_table, .o_list_table tr,
+    .o_list_table th, .o_list_table td,
+    .o_list_table thead, .o_list_table tbody, .o_list_table tfoot {
+        border-color: var(--tf-border) !important;
+    }
+
+    .o_list_table .o_data_row td,
+    .o_list_table td.o_data_cell {
+        background-color: var(--tf-surface) !important;
+    }
+
+    // ── AUDIT: CHATTER ──
+    .o-mail-Chatter-top {
+        background-color: var(--tf-surface-2) !important;
+        border-bottom-color: var(--tf-border) !important;
+    }
+
+    .o-mail-Chatter-logNote,
+    .o-mail-Chatter-activity {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // ── AUDIT: PURCHASE DASHBOARD ──
+    .o_purchase_dashboard {
+        background-color: var(--tf-bg) !important;
+    }
+
+    .purchase-dashboard-card {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // ── AUDIT: MISC ──
+    .border-secondary { border-color: var(--tf-border) !important; }
+    .o-discuss-Typing { background-color: var(--tf-bg) !important; }
+
+    // ── SETTINGS DARK: Section headers light grey bg ──
+    .app_settings_block h2,
+    .o_settings_container h2,
+    .o_setting_box h2,
+    .o_base_settings_view h2 {
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    // ── SETTINGS DARK: Email input black text ──
+    .o_user_emails,
+    .o_user_emails input,
+    .o_user_emails .o_input {
+        color: var(--tf-text) !important;
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+    }
+
+    // ── SETTINGS DARK: Active tab poor contrast ──
+    .settings_tab .selected,
+    .settings_tab .tab.selected,
+    .o_base_settings_view .settings_tab .selected {
+        background-color: var(--tf-primary-soft) !important;
+        color: var(--tf-primary) !important;
+        box-shadow: var(--tf-primary) 2px 0 0 inset !important;
+    }
+
+    // ── SETTINGS DARK: Save/Discard button prominence ──
+    .o_control_panel .btn-primary,
+    .o_form_button_save.btn-primary {
+        background-color: var(--tf-primary) !important;
+        border-color: var(--tf-primary) !important;
+        color: var(--tf-on-primary) !important;
+    }
+    .o_control_panel .btn-secondary,
+    .o_form_button_cancel {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // ── SETTINGS DARK: Date input invisible ──
+    .o_input.cursor-pointer,
+    .o_datepicker_input {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+        &::placeholder { color: var(--tf-text-muted) !important; }
+    }
+
+    // ── SETTINGS DARK: External link icon contrast ──
+    .o_external_button,
+    .o_external_button .fa {
+        color: var(--tf-text-muted) !important;
+        &:hover { color: var(--tf-primary) !important; }
+    }
+
+    // ── DASHBOARD DARK: Spreadsheet grid forced white bg ──
+    .o_spreadsheet_dashboard_action .o_renderer .o-spreadsheet .o-grid {
+        background-color: var(--tf-surface) !important;
+    }
+    .o_spreadsheet_dashboard_action .o_renderer .o-spreadsheet canvas {
+        background-color: var(--tf-surface) !important;
+    }
+
+    // ── DASHBOARD DARK: Clickable cell text invisible ──
+    .o-dashboard-clickable-cell,
+    .o-grid-overlay .o-dashboard-clickable-cell {
+        color: var(--tf-text) !important;
+    }
+    .o-grid-overlay .o-icon.sorting-icon,
+    .o-grid-overlay i.fa {
+        color: var(--tf-text-muted) !important;
+        background-color: transparent !important;
+    }
+
+    // ── DASHBOARD DARK: Grid + overlay text color ──
+    .o-grid,
+    .o-grid-overlay {
+        color: var(--tf-text) !important;
+    }
+
+    // ── DASHBOARD DARK: Search panel .bg-view white bg ──
+    .bg-view {
+        background-color: var(--tf-surface) !important;
+    }
+
+    // ── DASHBOARD DARK: Custom scrollbars inside spreadsheet ──
+    .o-scrollbar {
+        background-color: var(--tf-surface-2) !important;
+    }
+    .o-scrollbar:hover {
+        background-color: var(--tf-border) !important;
+    }
+
+    // ── DASHBOARD DARK: Sorting icon white bg ──
+    .o-icon.sorting-icon {
+        background-color: transparent !important;
+        color: var(--tf-text-muted) !important;
+    }
+
+    // === Scrollbar ===
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--tf-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--tf-border); border-radius: 999px; }
+}

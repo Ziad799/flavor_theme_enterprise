@@ -1,0 +1,127 @@
+// Theme Flavor Enterprise — Utility overrides and misc components
+
+// Modal dialogs
+.o_web_client .modal {
+    .modal-content {
+        border-radius: var(--tf-r-xl);
+        border: 1px solid var(--tf-border);
+        box-shadow: var(--tf-shadow-lg);
+        background-color: var(--tf-surface);
+    }
+
+    .modal-header {
+        border-bottom: 1px solid var(--tf-border);
+        font-family: var(--tf-font-heading);
+    }
+
+    .modal-footer {
+        border-top: 1px solid var(--tf-border);
+    }
+}
+
+// Notifications
+.o_notification {
+    border-radius: var(--tf-r-lg) !important;
+    box-shadow: var(--tf-shadow-lg);
+    font-family: var(--tf-font-body);
+}
+
+// Loading indicator
+.o_loading_indicator {
+    background-color: var(--tf-primary) !important;
+}
+
+// Selection highlights
+::selection {
+    background-color: var(--tf-primary-soft);
+    color: var(--tf-primary);
+}
+
+// Tags
+.o_web_client .o_tag {
+    border-radius: var(--tf-r-pill);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+// Discuss sidebar — override Odoo's dark sidebar
+.o-mail-DiscussSidebar,
+.o_DiscussSidebar {
+    background-color: var(--tf-surface) !important;
+    border-right: 1px solid var(--tf-border) !important;
+
+    .o-mail-DiscussSidebarCategory,
+    .o-mail-DiscussSidebarChannel {
+        color: var(--tf-text) !important;
+
+        &:hover {
+            background-color: var(--tf-primary-soft) !important;
+        }
+
+        &.o-active {
+            background-color: var(--tf-primary-soft) !important;
+            color: var(--tf-primary) !important;
+        }
+    }
+
+    .o-mail-DiscussSidebarCategory-header {
+        color: var(--tf-text-muted) !important;
+        font-family: var(--tf-font-heading);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+// Discuss main area
+.o-mail-Discuss {
+    background-color: var(--tf-bg) !important;
+}
+
+// Calendar view
+.o_calendar_view {
+    .fc .fc-toolbar .fc-button {
+        border-radius: var(--tf-r-md);
+        border-color: var(--tf-border);
+        color: var(--tf-text-muted);
+
+        &.fc-button-active,
+        &:hover {
+            background-color: var(--tf-primary);
+            border-color: var(--tf-primary);
+            color: var(--tf-on-primary);
+        }
+    }
+
+    .fc .fc-daygrid-day.fc-day-today {
+        background-color: var(--tf-primary-soft) !important;
+    }
+}
+
+// Pivot view
+.o_pivot_view table {
+    thead th {
+        background-color: var(--tf-surface-2);
+        color: var(--tf-text-muted);
+        font-family: var(--tf-font-heading);
+    }
+
+    tbody td {
+        color: var(--tf-text);
+    }
+}
+
+// Graph view
+.o_graph_view {
+    background-color: var(--tf-bg);
+}
+
+// Content area
+.o_web_client .o_content {
+    background-color: var(--tf-bg);
+}
+
+// Action manager
+.o_web_client .o_action_manager {
+    background-color: var(--tf-bg);
+}

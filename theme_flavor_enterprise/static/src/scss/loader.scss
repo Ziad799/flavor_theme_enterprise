@@ -1,0 +1,89 @@
+// Theme Flavor Enterprise — Loading Animations
+
+// === Pulse loader ===
+.tf-loader-pulse {
+    .o_loading_indicator {
+        background: transparent !important;
+        height: 4px;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 30%;
+            height: 100%;
+            background: var(--tf-primary);
+            border-radius: var(--tf-r-pill);
+            animation: tf-pulse 1.5s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes tf-pulse {
+    0% { transform: translateX(-100%); opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { transform: translateX(400%); opacity: 0.3; }
+}
+
+// === Bouncing dots loader ===
+.tf-loader-dots {
+    .o_loading_indicator {
+        background: transparent !important;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+
+        &::before,
+        &::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--tf-primary);
+        }
+
+        &::before {
+            animation: tf-bounce 0.6s ease-in-out infinite alternate;
+        }
+
+        &::after {
+            animation: tf-bounce 0.6s ease-in-out infinite alternate 0.3s;
+        }
+    }
+}
+
+@keyframes tf-bounce {
+    0% { transform: translateY(0); opacity: 0.4; }
+    100% { transform: translateY(-10px); opacity: 1; }
+}
+
+// === Spinner ring loader ===
+.tf-loader-ring {
+    .o_loading_indicator {
+        background: transparent !important;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+
+        &::after {
+            content: "" !important;
+            width: 20px !important;
+            height: 20px !important;
+            border: 2px solid transparent !important;
+            border-top: 2px solid var(--tf-primary) !important;
+            border-right: 2px solid var(--tf-border) !important;
+            border-bottom: 2px solid var(--tf-border) !important;
+            border-left: 2px solid var(--tf-border) !important;
+            border-radius: 50% !important;
+            animation: tf-spin 0.8s linear infinite !important;
+        }
+    }
+}
+
+@keyframes tf-spin {
+    to { transform: rotate(360deg); }
+}

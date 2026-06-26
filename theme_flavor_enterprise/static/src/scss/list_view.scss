@@ -1,0 +1,166 @@
+// Theme Flavor Enterprise — List View
+
+.o_list_view {
+    background-color: var(--tf-bg);
+
+    // Table wrapper
+    .o_list_renderer {
+        background-color: var(--tf-surface);
+        border: 1px solid var(--tf-border);
+        border-radius: var(--tf-r-xl);
+        overflow: hidden;
+        box-shadow: var(--tf-shadow-sm);
+    }
+
+    // Table header
+    table thead th {
+        background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text-muted) !important;
+        font-family: var(--tf-font-heading);
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid var(--tf-border) !important;
+        padding: 10px 12px;
+    }
+
+    // Table rows
+    table tbody tr {
+        border-bottom: 1px solid var(--tf-border);
+        transition: background-color var(--tf-transition);
+
+        &:hover {
+            background-color: var(--tf-primary-soft) !important;
+        }
+
+        &.o_data_row.o_row_selected,
+        &.o_data_row.o_list_record_selected {
+            background-color: var(--tf-primary-soft) !important;
+        }
+
+        td {
+            color: var(--tf-text);
+            font-size: 13px;
+            padding: 10px 12px;
+            border-bottom-color: var(--tf-border) !important;
+        }
+    }
+
+    // Status badges
+    .badge {
+        border-radius: var(--tf-r-pill);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 10px;
+    }
+
+    // Checkboxes
+    .o_list_record_selector {
+        .form-check-input {
+            border-color: var(--tf-border);
+            border-radius: var(--tf-r-sm);
+
+            &:checked {
+                background-color: var(--tf-primary);
+                border-color: var(--tf-primary);
+            }
+        }
+    }
+}
+
+// Search panel (left side filters)
+.o_search_panel {
+    background-color: var(--tf-surface) !important;
+    border-right: 1px solid var(--tf-border) !important;
+
+    .o_search_panel_section_header {
+        font-family: var(--tf-font-heading);
+        color: var(--tf-text);
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .o_search_panel_category_value,
+    .o_search_panel_filter_value {
+        border-radius: var(--tf-r-md);
+        color: var(--tf-text);
+        transition: all var(--tf-transition);
+
+        &:hover,
+        &.active {
+            background-color: var(--tf-primary-soft);
+            color: var(--tf-primary);
+        }
+    }
+}
+
+// Control panel (top bar with filters, group by, etc.)
+.o_control_panel {
+    background-color: var(--tf-surface) !important;
+    border-bottom: 1px solid var(--tf-border) !important;
+    padding: 8px 16px;
+
+    .o_searchview {
+        background-color: var(--tf-surface-2);
+        border: 1px solid var(--tf-border);
+        border-radius: var(--tf-r-pill);
+
+        &:focus-within {
+            border-color: var(--tf-primary);
+            box-shadow: 0 0 0 2px var(--tf-primary-soft);
+        }
+
+        .o_searchview_input {
+            color: var(--tf-text);
+
+            &::placeholder {
+                color: var(--tf-text-muted);
+            }
+        }
+    }
+
+    // Filter / Group By / Favorites buttons
+    .o_cp_searchview .o_searchview_quick {
+        border-radius: var(--tf-r-pill);
+    }
+
+    .btn-group .btn,
+    .o_cp_action_menus .dropdown-toggle {
+        color: var(--tf-text-muted);
+        border-color: var(--tf-border);
+        border-radius: var(--tf-r-md);
+        font-size: 13px;
+        font-weight: 500;
+
+        &:hover {
+            color: var(--tf-primary);
+            background-color: var(--tf-primary-soft);
+            border-color: var(--tf-primary);
+        }
+    }
+}
+
+// Pager
+.o_pager {
+    .o_pager_counter {
+        color: var(--tf-text-muted);
+        font-size: 13px;
+    }
+
+    .o_pager_previous,
+    .o_pager_next {
+        color: var(--tf-text-muted);
+        border: 1px solid var(--tf-border);
+        border-radius: var(--tf-r-md);
+        transition: all var(--tf-transition);
+
+        &:hover {
+            color: var(--tf-primary);
+            background-color: var(--tf-primary-soft);
+            border-color: var(--tf-primary);
+        }
+    }
+}

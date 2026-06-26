@@ -1,0 +1,218 @@
+// Theme Flavor Enterprise — Custom Login Page
+
+.tfe-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--tf-bg);
+    position: relative;
+
+    // Dark overlay on background image
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+
+    // Glassmorphic login card
+    .tfe-login-card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 420px;
+        padding: 40px 36px;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+
+        // Company logo
+        .tfe-login-logo {
+            display: block;
+            max-height: 56px;
+            margin: 0 auto 24px;
+        }
+
+        // Title
+        .tfe-login-title {
+            text-align: center;
+            font-family: var(--tf-font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .tfe-login-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 28px;
+        }
+
+        // Form inputs
+        .form-control,
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 10px;
+            color: #fff !important;
+            padding: 12px 16px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            &:focus {
+                border-color: rgba(255, 255, 255, 0.5) !important;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.15) !important;
+            }
+        }
+
+        label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        // Submit button
+        .btn-primary,
+        .oe_login_buttons .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #fff !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.3) !important;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        // Links
+        a {
+            color: rgba(255, 255, 255, 0.7);
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        // Divider
+        .tfe-login-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 20px 0;
+        }
+
+        // Error messages
+        .alert {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 10px;
+            color: #fca5a5;
+        }
+    }
+}
+
+// Without background image — use gradient
+.tfe-login-page:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+    &::before {
+        display: none;
+    }
+}
+
+// Fix: Target Odoo's actual server-rendered card classes
+.tfe-login-page .card.border-0,
+.tfe-login-page .card,
+.tfe-login-page .oe_login_form {
+    background: rgba(255, 255, 255, 0.07) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    padding: 2rem !important;
+    max-width: 420px !important;
+}
+
+.tfe-login-page .card label,
+.tfe-login-page .card h4,
+.tfe-login-page .card .o_login_prompt,
+.tfe-login-page .card p,
+.tfe-login-page .card .form-label {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.tfe-login-page .card .form-control,
+.tfe-login-page .card input[type="email"],
+.tfe-login-page .card input[type="text"],
+.tfe-login-page .card input[type="password"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+
+    &::placeholder { color: rgba(255, 255, 255, 0.45) !important; }
+    &:focus {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+.tfe-login-page .card .btn-primary[type="submit"],
+.tfe-login-page .oe_login_buttons .btn-primary {
+    background: var(--tf-primary, #4F46E5) !important;
+    border-color: var(--tf-primary, #4F46E5) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 10px !important;
+    width: 100% !important;
+}
+
+.tfe-login-page .card a {
+    color: rgba(255, 255, 255, 0.75) !important;
+    &:hover { color: #ffffff !important; }
+}
+
+.tfe-login-page .card .alert {
+    background: rgba(220, 38, 38, 0.15) !important;
+    border: 1px solid rgba(220, 38, 38, 0.3) !important;
+    border-radius: 10px !important;
+    color: #fca5a5 !important;
+}
+
+// Responsive
+@media (max-width: 480px) {
+    .tfe-login-page .card,
+    .tfe-login-page .tfe-login-card {
+        margin: 16px;
+        padding: 28px 24px !important;
+    }
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_tfe" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.tfe</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Theme &amp; Appearance" string="Theme &amp; Appearance"
+                     name="theme_flavor_enterprise"
+                     logo="/theme_flavor_enterprise/static/description/icon.png">
+
+                    <block title="Color Presets"
+                           help="Choose a preset or define custom Primary and Accent colors. Changes apply instantly.">
+                        <setting string="Color Preset"
+                                 help="Select one of the three built-in color schemes.">
+                            <field name="tfe_preset" widget="radio"/>
+                        </setting>
+                    </block>
+
+                    <block title="Custom Colors"
+                           help="Override the preset primary and accent with your own colors.">
+                        <setting string="Use Custom Colors"
+                                 help="Enable to manually set Primary and Accent colors.">
+                            <field name="tfe_use_custom"/>
+                            <div invisible="not tfe_use_custom" class="mt-3">
+                                <div class="row mb-2">
+                                    <label for="tfe_primary" class="col-3 col-form-label">Primary Color</label>
+                                    <div class="col-9">
+                                        <field name="tfe_primary" placeholder="#4F46E5"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="tfe_accent" class="col-3 col-form-label">Accent Color</label>
+                                    <div class="col-9">
+                                        <field name="tfe_accent" placeholder="#0EA5C4"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
+                    <block title="Typography"
+                           help="Choose fonts for headings and body text from 20 Google Fonts.">
+                        <setting string="Heading Font"
+                                 help="Used for titles, labels, and navigation.">
+                            <field name="tfe_font_heading"/>
+                        </setting>
+                        <setting string="Body Font"
+                                 help="Used for body text, inputs, and data.">
+                            <field name="tfe_font_body"/>
+                        </setting>
+                    </block>
+
+                    <block title="Display"
+                           help="Adjust list density and zoom level.">
+                        <setting string="List Density"
+                                 help="Control row height in list views.">
+                            <field name="tfe_density" widget="radio"/>
+                        </setting>
+                        <setting string="Zoom Level"
+                                 help="Global font size scaling (80-120%).">
+                            <field name="tfe_zoom"/>
+                            <div class="text-muted mt-1" style="font-size: 12px;">
+                                Enter a value between 80 and 120. Default is 100.
+                            </div>
+                        </setting>
+                    </block>
+
+                    <block title="Loading Animation"
+                           help="Choose the loading indicator style.">
+                        <setting string="Loader Style"
+                                 help="Visual style for the page loading indicator.">
+                            <field name="tfe_loader_style" widget="radio"/>
+                        </setting>
+                    </block>
+
+                    <block title="Login Page"
+                           help="Customize the login page appearance.">
+                        <setting string="Login Background Image"
+                                 help="Upload a background image for the glassmorphic login page.">
+                            <field name="tfe_login_bg" widget="image"/>
+                        </setting>
+                    </block>
+
+                    <block title="Dark Mode"
+                           help="Toggle dark mode from the moon/sun icon in the top bar.">
+                        <setting string="Dark Mode"
+                                 help="Each preset has its own dark palette. Preference saved per user.">
+                            <div class="text-muted" style="font-size: 13px;">
+                                Use the moon/sun icon in the systray (top-right) to toggle dark mode.
+                            </div>
+                        </setting>
+                    </block>
+
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,58 @@
+// Theme Flavor Enterprise — Design Token System
+// All colors flow through CSS custom properties; SCSS only references vars.
+// Preset values are injected at runtime by the OWL theme service.
+
+:root {
+    // === Color tokens (defaults: Indigo Light) ===
+    --tf-primary: #4F46E5;
+    --tf-primary-soft: #ECEDFE;
+    --tf-on-primary: #FFFFFF;
+    --tf-secondary: #6366F1;
+    --tf-accent: #0EA5C4;
+    --tf-accent-soft: #E0F4F9;
+    --tf-bg: #F2F3FB;
+    --tf-surface: #FCFCFE;
+    --tf-surface-2: #F6F7FD;
+    --tf-text: #1B1C2E;
+    --tf-text-muted: #6B6E85;
+    --tf-border: #E6E7F2;
+
+    // === Radius tokens ===
+    --tf-r-sm: 4px;
+    --tf-r-md: 6px;
+    --tf-r-lg: 8px;
+    --tf-r-xl: 11px;
+    --tf-r-pill: 999px;
+
+    // === Shadow tokens ===
+    --tf-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --tf-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --tf-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --tf-shadow-sidebar: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+    // === Typography ===
+    --tf-font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --tf-font-body: 'Manrope', system-ui, sans-serif;
+
+    // === Sidebar ===
+    --tf-sidebar-width: 248px;
+    --tf-sidebar-collapsed-width: 64px;
+
+    // === Transitions ===
+    --tf-transition: 0.2s ease;
+}
+
+// Fonts loaded via QWeb template (views/web_layout.xml), not @import
+
+// === Apply base typography ===
+.o_web_client {
+    font-family: var(--tf-font-body);
+    color: var(--tf-text);
+    background-color: var(--tf-bg);
+}
+
+h1, h2, h3, h4, h5, h6,
+.o_form_label,
+.breadcrumb-item {
+    font-family: var(--tf-font-heading);
+}

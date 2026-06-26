@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tfe_login_layout" model="ir.ui.view">
+        <field name="name">tfe.login.layout</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="web.login_layout"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('container')]" position="attributes">
+                <attribute name="class">container tfe-login-page</attribute>
+                <attribute name="style"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

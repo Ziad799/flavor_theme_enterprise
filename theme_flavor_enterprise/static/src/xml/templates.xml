@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <!-- Dark Mode Toggle in Systray -->
+    <t t-name="tfe.DarkModeToggle">
+        <div class="o_nav_entry d-flex align-items-center px-2" style="cursor: pointer;"
+             t-on-click="toggleDark"
+             t-att-title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+            <t t-if="isDark">
+                <i class="fa fa-sun-o fs-5" style="color: var(--tf-accent);"/>
+            </t>
+            <t t-else="">
+                <i class="fa fa-moon-o fs-5" style="color: var(--tf-text-muted);"/>
+            </t>
+        </div>
+    </t>
+
+    <!-- Persistent Sidebar -->
+    <t t-name="tfe.Sidebar">
+        <aside t-attf-class="tf-sidebar {{ state.collapsed ? 'tf-sidebar--collapsed' : '' }}">
+
+            <!-- User area -->
+            <div class="tf-sidebar__header">
+                <div class="tf-sidebar__user">
+                    <img class="tf-sidebar__avatar"
+                         t-attf-src="/web/image?model=res.users&amp;field=avatar_128&amp;id={{userId}}"
+                         alt="User"/>
+                    <t t-if="!state.collapsed">
+                        <span class="tf-sidebar__username" t-esc="userName"/>
+                    </t>
+                </div>
+                <t t-if="!state.collapsed">
+                    <div class="tf-sidebar__user-actions">
+                        <button class="tf-sidebar__icon-btn" t-on-click="onPreferences" title="My Preferences">
+                            <i class="fa fa-cog"/>
+                        </button>
+                        <button class="tf-sidebar__icon-btn" t-on-click="onLogout" title="Log out">
+                            <i class="fa fa-sign-out"/>
+                        </button>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Search bar -->
+            <t t-if="!state.collapsed">
+                <div class="tf-sidebar__search-wrap">
+                    <i class="fa fa-search tf-sidebar__search-icon"/>
+                    <input class="tf-sidebar__search"
+                           type="text"
+                           placeholder="Search menus..."
+                           t-on-input="onSearchInput"
+                           t-att-value="state.searchQuery"/>
+                </div>
+                <!-- Search results -->
+                <t t-if="state.searchResults.length">
+                    <div class="tf-sidebar__search-results">
+                        <t t-foreach="state.searchResults" t-as="item" t-key="item.id">
+                            <a class="tf-sidebar__search-result"
+                               href="#"
+                               t-on-click.prevent="() => this.onSearchResultClick(item)">
+                                <i class="fa fa-angle-right"/>
+                                <span t-esc="item.name"/>
+                            </a>
+                        </t>
+                    </div>
+                </t>
+            </t>
+
+            <!-- Bookmarks section -->
+            <t t-if="state.bookmarks.length and !state.searchQuery">
+                <div class="tf-sidebar__section-label">
+                    <t t-if="!state.collapsed">
+                        <i class="fa fa-star"/> Bookmarks
+                    </t>
+                    <t t-else="">
+                        <i class="fa fa-star" title="Bookmarks"/>
+                    </t>
+                </div>
+                <div class="tf-sidebar__bookmarks">
+                    <t t-foreach="state.bookmarks" t-as="bm" t-key="bm.id">
+                        <div class="tf-sidebar__bookmark-item" t-on-click="() => this.onBookmarkClick(bm)">
+                            <i class="fa fa-bookmark-o tf-sidebar__nav-dot"/>
+                            <t t-if="!state.collapsed">
+                                <span t-esc="bm.name"/>
+                                <button class="tf-sidebar__bookmark-remove"
+                                        t-on-click.stop="() => this.onRemoveBookmark(bm)"
+                                        title="Remove bookmark">
+                                    <i class="fa fa-times"/>
+                                </button>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </t>
+
+            <!-- All Apps button -->
+            <div class="tf-sidebar__section">
+                <button class="tf-sidebar__apps-btn" t-on-click="toggleAppsGrid">
+                    <i class="fa fa-th-large"/>
+                    <t t-if="!state.collapsed">
+                        <span>All Apps</span>
+                    </t>
+                </button>
+            </div>
+
+            <!-- Apps list -->
+            <div class="tf-sidebar__apps-grid">
+                <t t-foreach="apps" t-as="app" t-key="app.id">
+                    <div t-attf-class="tf-sidebar__app-tile {{ isActive(app) ? 'active' : '' }}"
+                         t-on-click="() => this.onAppClick(app)"
+                         t-att-title="app.name">
+                        <img t-if="app.webIconData"
+                             t-att-src="app.webIconData"
+                             class="tf-sidebar__app-icon"
+                             t-att-alt="app.name"/>
+                        <div t-else="" class="tf-sidebar__app-icon-placeholder">
+                            <t t-esc="app.name.charAt(0)"/>
+                        </div>
+                        <t t-if="!state.collapsed">
+                            <span class="tf-sidebar__app-name" t-esc="app.name"/>
+                            <!-- Bookmark star -->
+                            <button t-attf-class="tf-sidebar__star {{ isBookmarked(app) ? 'active' : '' }}"
+                                    t-on-click.stop="() => this.isBookmarked(app) ? null : this.onAddBookmark(app)"
+                                    t-att-title="isBookmarked(app) ? 'Bookmarked' : 'Add bookmark'">
+                                <i t-attf-class="fa {{ isBookmarked(app) ? 'fa-star' : 'fa-star-o' }}"/>
+                            </button>
+                        </t>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Collapse toggle at bottom -->
+            <div class="tf-sidebar__footer">
+                <button class="tf-sidebar__toggle" t-on-click="toggleCollapse"
+                        t-att-title="state.collapsed ? 'Expand' : 'Collapse'">
+                    <i t-attf-class="fa {{ state.collapsed ? 'fa-angle-double-right' : 'fa-angle-double-left' }}"/>
+                    <t t-if="!state.collapsed">
+                        <span>Collapse</span>
+                    </t>
+                </button>
+            </div>
+        </aside>
+    </t>
+
+    <!-- Color Preset Picker Widget -->
+    <t t-name="tfe.ColorPicker">
+        <div class="tf-color-picker d-flex flex-column gap-3 py-3">
+            <div class="d-flex flex-wrap gap-3">
+                <t t-foreach="presets" t-as="p" t-key="p.key">
+                    <div class="tf-preset-card d-flex flex-column align-items-center gap-2 p-3"
+                         t-attf-style="background:#{p.colors[state.previewMode].surface};border:2px solid #{state.selectedPreset === p.key ? p.colors[state.previewMode].primary : p.colors[state.previewMode].border};border-radius:11px;cursor:pointer;min-width:160px;"
+                         t-on-click="() => this.onSelectPreset(p.key)">
+                        <div class="d-flex gap-2">
+                            <div t-attf-style="width:32px;height:32px;border-radius:999px;background:#{p.colors[state.previewMode].primary};"/>
+                            <div t-attf-style="width:32px;height:32px;border-radius:999px;background:#{p.colors[state.previewMode].accent};"/>
+                            <div t-attf-style="width:32px;height:32px;border-radius:999px;background:#{p.colors[state.previewMode].bg};border:1px solid #{p.colors[state.previewMode].border};"/>
+                        </div>
+                        <span t-attf-style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:#{p.colors[state.previewMode].text};" t-esc="p.label"/>
+                        <t t-if="state.selectedPreset === p.key">
+                            <i class="fa fa-check-circle" t-attf-style="color:#{p.colors[state.previewMode].primary};font-size:16px;"/>
+                        </t>
+                    </div>
+                </t>
+            </div>
+            <div class="d-flex align-items-center gap-2 mt-2">
+                <span style="font-size:13px;color:var(--tf-text-muted);font-weight:500;">Live Preview:</span>
+                <button class="btn btn-sm" style="background:var(--tf-surface-2);border:1px solid var(--tf-border);border-radius:6px;color:var(--tf-text);font-size:12px;padding:4px 12px;" t-on-click="togglePreviewMode">
+                    <i t-attf-class="fa #{state.previewMode === 'dark' ? 'fa-moon-o' : 'fa-sun-o'} me-1"/>
+                    <t t-esc="state.previewMode === 'dark' ? 'Dark' : 'Light'"/>
+                </button>
+            </div>
+        </div>
+    </t>
+
+</templates>

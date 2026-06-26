@@ -1,0 +1,56 @@
+// Theme Flavor Enterprise — Breadcrumb Improvements
+// Collapsible breadcrumbs + icons
+
+.o_web_client .breadcrumb {
+    font-family: var(--tf-font-heading);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    .breadcrumb-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+
+        &.active {
+            font-weight: 600;
+            color: var(--tf-text);
+        }
+
+        a {
+            color: var(--tf-primary);
+            text-decoration: none;
+
+            &:hover {
+                color: var(--tf-secondary);
+                text-decoration: underline;
+            }
+        }
+
+        // Separator arrow styling
+        + .breadcrumb-item::before {
+            color: var(--tf-text-muted);
+            font-size: 11px;
+        }
+    }
+}
+
+// When too many breadcrumb items, collapse middle ones
+.o_web_client .breadcrumb {
+    // Hide middle items when more than 3 exist (CSS-only approach)
+    &:has(.breadcrumb-item:nth-child(4)) {
+        .breadcrumb-item:not(:first-child):not(:last-child):not(:nth-last-child(2)) {
+            display: none;
+        }
+
+        // Show ellipsis indicator before second-to-last
+        .breadcrumb-item:nth-last-child(2)::before {
+            content: "... /";
+            color: var(--tf-text-muted);
+            margin-right: 4px;
+        }
+    }
+}

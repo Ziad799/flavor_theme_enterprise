@@ -1,0 +1,119 @@
+// Theme Flavor Enterprise — Top bar
+// Override Odoo 19's default purple navbar
+
+.o_web_client .o_main_navbar {
+    background: var(--tf-surface) !important;
+    border-bottom: 1px solid var(--tf-border) !important;
+    box-shadow: var(--tf-shadow-sm);
+    font-family: var(--tf-font-body);
+
+    // Brand / App name
+    .o_menu_brand {
+        font-family: var(--tf-font-heading);
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--tf-text) !important;
+    }
+
+    // Menu toggle (hamburger)
+    .o_menu_toggle {
+        color: var(--tf-text) !important;
+    }
+
+    // Menu sections (top nav items)
+    .o_menu_sections .o_nav_entry,
+    .o_menu_sections > li > a,
+    .o_menu_sections > li > button,
+    .o_menu_sections .dropdown-toggle {
+        color: var(--tf-text-muted) !important;
+        font-weight: 500;
+        font-size: 13px;
+        border-radius: var(--tf-r-md);
+
+        &:hover,
+        &.show {
+            color: var(--tf-primary) !important;
+            background-color: var(--tf-primary-soft) !important;
+        }
+    }
+
+    // Systray icons (notifications, activities, etc.)
+    .o_menu_systray {
+        .o-dropdown {
+            .dropdown-toggle {
+                color: var(--tf-text-muted) !important;
+
+                &:hover {
+                    color: var(--tf-primary) !important;
+                    background-color: var(--tf-primary-soft) !important;
+                }
+
+                .badge {
+                    background-color: var(--tf-accent) !important;
+                    color: #fff !important;
+                    font-size: 10px;
+                    border-radius: var(--tf-r-pill);
+                }
+            }
+        }
+    }
+
+    // User avatar
+    img.o_user_avatar,
+    .o_user_avatar {
+        border-radius: var(--tf-r-pill);
+        border: 2px solid var(--tf-border);
+    }
+}
+
+// Dropdown menus globally
+.o_web_client .dropdown-menu {
+    background-color: var(--tf-surface);
+    border: 1px solid var(--tf-border);
+    border-radius: var(--tf-r-lg);
+    box-shadow: var(--tf-shadow-lg);
+    padding: 4px;
+
+    .dropdown-item {
+        border-radius: var(--tf-r-md);
+        color: var(--tf-text);
+        font-size: 13px;
+        padding: 6px 12px;
+        transition: all var(--tf-transition);
+
+        &:hover,
+        &:focus {
+            background-color: var(--tf-primary-soft);
+            color: var(--tf-primary);
+        }
+
+        &.active,
+        &:active {
+            background-color: var(--tf-primary);
+            color: var(--tf-on-primary);
+        }
+    }
+
+    .dropdown-divider {
+        border-color: var(--tf-border);
+    }
+}
+
+// Breadcrumbs
+.o_web_client .breadcrumb {
+    font-family: var(--tf-font-heading);
+
+    .breadcrumb-item {
+        color: var(--tf-text-muted);
+        font-size: 13px;
+
+        &.active {
+            color: var(--tf-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--tf-primary);
+        }
+    }
+}

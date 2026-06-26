@@ -1,0 +1,44 @@
+// Theme Flavor Enterprise — List View Density
+
+// Compact: 28px rows
+body.tf-density-compact {
+    .o_list_table td,
+    .o_list_table th {
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+        height: 28px !important;
+        line-height: 24px !important;
+        font-size: 12px;
+    }
+
+    .o_kanban_record {
+        padding: 8px !important;
+    }
+
+    .o_form_view .o_inner_group .o_cell {
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+}
+
+// Comfortable: 36px rows (default — no override needed)
+
+// Spacious: 44px rows
+body.tf-density-spacious {
+    .o_list_table td,
+    .o_list_table th {
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+        height: 52px !important;
+        line-height: 24px !important;
+    }
+
+    .o_kanban_record {
+        padding: 20px !important;
+    }
+
+    .o_form_view .o_inner_group .o_cell {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+}

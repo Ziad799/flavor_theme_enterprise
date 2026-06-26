@@ -1,0 +1,80 @@
+// Theme Flavor Enterprise — RTL (Right-to-Left) Support
+
+html[dir="rtl"] {
+    .tf-sidebar {
+        left: auto !important;
+        right: 0 !important;
+        border-right: none !important;
+        border-left: 1px solid var(--tf-border) !important;
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .tf-sidebar__app-tile.active {
+        border-left: 3px solid var(--tf-primary);
+        border-right: none;
+        border-radius: var(--tf-r-md) 0 0 var(--tf-r-md);
+        padding-right: 9px;
+    }
+
+    .tf-sidebar__toggle .fa-angle-double-left::before { content: "\f101"; }
+    .tf-sidebar__toggle .fa-angle-double-right::before { content: "\f100"; }
+
+    .o_main_navbar { direction: rtl; }
+    .breadcrumb-item + .breadcrumb-item::before {
+        content: "\f104";
+        font-family: "FontAwesome";
+    }
+
+    .o_form_view {
+        .o_inner_group { direction: rtl; }
+        .o_form_statusbar .o_statusbar_status { direction: rtl; }
+        .oe_button_box .oe_stat_button {
+            border-right: none;
+            border-left: 1px solid var(--tf-border);
+        }
+    }
+
+    .o_list_view .o_list_table {
+        direction: rtl;
+        th, td { text-align: right; }
+    }
+
+    .o_search_panel {
+        border-right: none !important;
+        border-left: 1px solid var(--tf-border) !important;
+    }
+
+    .o_control_panel { direction: rtl; }
+    .o-mail-Chatter, .o-mail-Message { direction: rtl; }
+    .dropdown-menu { text-align: right; }
+    .o_notebook .nav-tabs { direction: rtl; }
+}
+
+// Fix: action_manager + navbar margin swap (tf-has-sidebar is on body)
+html[dir="rtl"] body.tf-has-sidebar .o_main_navbar,
+[dir="rtl"] .o_web_client.tf-has-sidebar .o_main_navbar {
+    margin-left: 0 !important;
+    margin-right: var(--tf-sidebar-width) !important;
+}
+
+html[dir="rtl"] body.tf-has-sidebar .o_action_manager,
+html[dir="rtl"] body.tf-has-sidebar .o_home_menu,
+[dir="rtl"] .o_web_client.tf-has-sidebar .o_action_manager,
+[dir="rtl"] .o_web_client.tf-has-sidebar .o_home_menu {
+    margin-left: 0 !important;
+    margin-right: var(--tf-sidebar-width) !important;
+}
+
+html[dir="rtl"] body.tf-sidebar-collapsed .o_main_navbar,
+html[dir="rtl"] body.tf-sidebar-collapsed .o_action_manager,
+html[dir="rtl"] body.tf-sidebar-collapsed .o_home_menu {
+    margin-right: var(--tf-sidebar-collapsed-width) !important;
+}
+
+@media (max-width: 767px) {
+    html[dir="rtl"] body.tf-has-sidebar {
+        .o_main_navbar, .o_action_manager, .o_home_menu {
+            margin-right: 0 !important;
+        }
+    }
+}

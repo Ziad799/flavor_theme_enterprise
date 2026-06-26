@@ -1,0 +1,215 @@
+// Theme Flavor Enterprise — Dashboard / Kanban view
+
+.o_web_client .o_action_manager .o_kanban_view {
+    background-color: var(--tf-bg);
+}
+
+// Kanban renderer
+.o_kanban_renderer {
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--tf-bg) !important;
+    --Kanban-background: var(--tf-bg);
+    --KanbanGroup-background: transparent;
+    --KanbanRecord-background-color: var(--tf-surface);
+}
+
+// Kanban records
+.o_kanban_record {
+    background-color: var(--tf-surface) !important;
+    border: 1px solid var(--tf-border) !important;
+    border-radius: var(--tf-r-xl) !important;
+    box-shadow: var(--tf-shadow-sm);
+    transition: all var(--tf-transition);
+    overflow: hidden;
+    color: var(--tf-text) !important;
+
+    &:hover {
+        box-shadow: var(--tf-shadow-md);
+        transform: translateY(-1px);
+        border-color: var(--tf-primary-soft) !important;
+    }
+
+    .o_kanban_record_title,
+    .o_kanban_record_headings strong {
+        font-family: var(--tf-font-heading);
+        color: var(--tf-text);
+        font-weight: 600;
+    }
+
+    .o_kanban_record_body {
+        color: var(--tf-text-muted);
+        font-size: 13px;
+    }
+
+    // Progress bars
+    .o_kanban_progressbar .progress {
+        border-radius: var(--tf-r-pill);
+        height: 6px;
+        background-color: var(--tf-surface-2);
+
+        .progress-bar {
+            background-color: var(--tf-primary);
+            border-radius: var(--tf-r-pill);
+        }
+    }
+}
+
+// Kanban ghost / empty placeholder cards
+.o_kanban_record.o_kanban_ghost,
+.o_kanban_ghost {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 0;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+// Kanban column headers
+.o_kanban_group_header {
+    font-family: var(--tf-font-heading);
+    font-weight: 600;
+    color: var(--tf-text);
+    border-bottom: 2px solid var(--tf-border);
+    padding-bottom: 8px;
+}
+
+.o_kanban_group {
+    background-color: transparent;
+}
+
+// Kanban column
+.o_kanban_renderer .o_kanban_group {
+    background-color: transparent !important;
+}
+
+// Kanban header (grouped)
+.o_kanban_header {
+    background-color: transparent !important;
+
+    .o_kanban_header_title {
+        color: var(--tf-text) !important;
+        font-family: var(--tf-font-heading);
+    }
+}
+
+// Kanban "load more" / "create" buttons
+.o_kanban_load_more,
+.o_kanban_add_column,
+.o_kanban_quick_add {
+    color: var(--tf-primary) !important;
+    background-color: var(--tf-surface) !important;
+    border: 1px dashed var(--tf-border) !important;
+    border-radius: var(--tf-r-lg) !important;
+}
+
+// === Dashboard view (spreadsheet/BI dashboards) ===
+.o_dashboard_view,
+.o_spreadsheet_dashboard,
+.o_spreadsheet_dashboard_action {
+    background-color: var(--tf-bg) !important;
+}
+
+// Dashboard figure/card containers
+.o_dashboard_view .o_figure,
+.o_spreadsheet_dashboard .o_figure,
+.o_dashboard_action .o_graph_renderer,
+.o_dashboard_action .o_pivot_renderer,
+.o_spreadsheet_dashboard .o-spreadsheet {
+    background-color: var(--tf-surface) !important;
+    border: 1px solid var(--tf-border) !important;
+    border-radius: var(--tf-r-xl) !important;
+    color: var(--tf-text) !important;
+}
+
+// Dashboard search panel / sidebar
+.o_dashboard_view .o_search_panel,
+.o_spreadsheet_dashboard .o_search_panel {
+    background-color: var(--tf-surface) !important;
+    border-right: 1px solid var(--tf-border) !important;
+    color: var(--tf-text) !important;
+
+    .o_search_panel_section_header {
+        color: var(--tf-text-muted) !important;
+        font-family: var(--tf-font-heading);
+    }
+
+    .o_search_panel_category_value,
+    .o_search_panel_filter_value {
+        color: var(--tf-text) !important;
+
+        &:hover, &.active {
+            background-color: var(--tf-primary-soft) !important;
+            color: var(--tf-primary) !important;
+        }
+    }
+
+    a { color: var(--tf-primary) !important; }
+}
+
+// Spreadsheet component overrides
+.o-spreadsheet {
+    --o-background: var(--tf-surface) !important;
+    --o-color: var(--tf-text) !important;
+    --o-border-color: var(--tf-border) !important;
+
+    .o-topbar,
+    .o-bottom-bar {
+        background-color: var(--tf-surface) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+}
+
+// Dashboard stat boxes
+.o_dashboard .o_aggregate {
+    background-color: var(--tf-surface);
+    border: 1px solid var(--tf-border);
+    border-radius: var(--tf-r-xl);
+    padding: 16px 20px;
+    transition: all var(--tf-transition);
+
+    &:hover {
+        box-shadow: var(--tf-shadow-md);
+    }
+
+    .o_value {
+        font-family: var(--tf-font-heading);
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--tf-text);
+    }
+
+    .o_label {
+        color: var(--tf-text-muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+}
+
+// Buttons (global)
+.o_web_client {
+    .btn-primary {
+        border-radius: var(--tf-r-md);
+        font-weight: 600;
+        font-family: var(--tf-font-body);
+        transition: all var(--tf-transition);
+
+        &:hover {
+            filter: brightness(1.1);
+            box-shadow: var(--tf-shadow-md);
+        }
+    }
+
+    .btn-secondary,
+    .btn-outline-primary {
+        border-radius: var(--tf-r-md);
+        font-weight: 500;
+    }
+}

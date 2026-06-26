@@ -1,0 +1,75 @@
+// Theme Flavor Enterprise — Sticky Headers
+// Sticky column headers, form statusbar, and chatter top
+
+// List view — sticky column headers
+.o_web_client .o_list_view .o_list_renderer {
+    .o_list_table thead {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background-color: var(--tf-surface-2);
+
+        th {
+            background-color: var(--tf-surface-2) !important;
+        }
+    }
+}
+
+// Inline list inside form (one2many) — sticky headers
+.o_web_client .o_form_view .o_field_one2many .o_list_table thead,
+.o_web_client .o_form_view .o_field_many2many .o_list_table thead {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background-color: var(--tf-surface-2);
+
+    th {
+        background-color: var(--tf-surface-2) !important;
+    }
+}
+
+// Form view — sticky statusbar
+.o_web_client .o_form_view .o_form_statusbar {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background-color: var(--tf-surface) !important;
+    box-shadow: var(--tf-shadow-sm);
+}
+
+// Form view — sticky control panel
+.o_web_client .o_control_panel {
+    position: sticky;
+    top: 0;
+    z-index: 7;
+    background-color: var(--tf-surface) !important;
+    box-shadow: var(--tf-shadow-sm);
+}
+
+// Chatter — sticky top bar (send message, log note, activities)
+.o_web_client .o-mail-Chatter .o-mail-Chatter-top {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background-color: var(--tf-surface-2) !important;
+    box-shadow: var(--tf-shadow-sm);
+}
+
+// Dark mode adjustments
+body.tf-dark {
+    .o_list_view .o_list_renderer .o_list_table thead th {
+        background-color: var(--tf-surface-2) !important;
+    }
+
+    .o_form_view .o_form_statusbar {
+        background-color: var(--tf-surface) !important;
+    }
+
+    .o_control_panel {
+        background-color: var(--tf-surface) !important;
+    }
+
+    .o-mail-Chatter .o-mail-Chatter-top {
+        background-color: var(--tf-surface-2) !important;
+    }
+}
