@@ -509,3 +509,49 @@ input.o_search_hidden {
 .o_home_menu_background .o_home_menu.h-100.overflow-auto {
     background-color: var(--tf-bg) !important;
 }
+
+// =============================================================================
+// STUDIO COMPATIBILITY
+// =============================================================================
+
+// STUDIO FIX 1: Hide sidebar when Studio is active
+body.o_in_studio .tf-sidebar {
+    display: none !important;
+}
+
+// STUDIO FIX 2: Reset all margins when sidebar hidden in Studio
+body.o_in_studio .o_action_manager,
+body.o_in_studio .o_home_menu {
+    margin-left: 0 !important;
+    transition: none !important;
+}
+
+// STUDIO FIX 3: Fix double-margin on Studio's own navbar
+body.o_in_studio .o_studio .o_main_navbar,
+body.o_in_studio .o_studio nav.o_main_navbar,
+body.o_in_studio .o_studio .o_studio_navbar {
+    margin-left: 0 !important;
+}
+
+// STUDIO FIX 4: Reset outer navbar margin in Studio
+body.o_in_studio .o_navbar .o_main_navbar,
+body.o_in_studio .o_main_navbar {
+    margin-left: 0 !important;
+}
+
+// STUDIO FIX 5: Studio view renderer full width
+body.o_in_studio .o_studio {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+
+// STUDIO FIX 6: Studio sidebar nav-tabs bg
+body.o_in_studio .o_web_studio_sidebar .nav.nav-tabs {
+    background-color: rgb(58, 63, 70) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+// STUDIO FIX 7: Studio home menu edit icon
+.o_studio_home_menu .o_app .o_web_studio_edit_icon i {
+    background-color: var(--tf-primary) !important;
+}

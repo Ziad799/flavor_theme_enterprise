@@ -687,12 +687,30 @@ body.tf-dark {
         color: var(--tf-text-muted) !important;
     }
 
-    // ── EE DM-1: App icons white bg in dark ──
+    // ── EE DM-1: App icons + labels in dark home menu ──
     .o_app_icon,
     .o_home_menu .o_app_icon,
     .o_app.o_menuitem .o_app_icon {
         background-color: var(--tf-surface) !important;
         border: 1px solid var(--tf-border) !important;
+    }
+
+    // App name labels in home menu — must be visible on dark bg
+    .o_home_menu .o_app_name,
+    .o_home_menu .o_apps .o_app .o_app_name,
+    .o_home_menu .o_menuitem .o_app_name,
+    .o_app .o_caption,
+    .o_home_menu .o_caption {
+        color: var(--tf-text) !important;
+    }
+
+    // Home menu search input
+    .o_home_menu .o_apps_search input,
+    .o_home_menu_search_input {
+        color: var(--tf-text) !important;
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        &::placeholder { color: var(--tf-text-muted) !important; }
     }
 
     // ── EE DM-2: ImStatus always white ──
@@ -765,6 +783,38 @@ body.tf-dark {
         box-shadow:
             var(--tf-surface) 20px 0px 0px,
             var(--tf-surface) -20px 0px 0px !important;
+    }
+
+    // ── STUDIO DARK: Component tiles white in dark mode ──
+    .o_web_studio_component.bg-light,
+    .o_web_studio_component.o_web_studio_icon_container {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        span, p, label { color: var(--tf-text-muted) !important; }
+    }
+
+    // ── STUDIO DARK: Sidebar inputs ──
+    .o_web_studio_sidebar {
+        input, select, .o_input, textarea {
+            background-color: rgb(38, 44, 52) !important;
+            color: rgb(183, 183, 183) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        label, .o_web_studio_sidebar_header {
+            color: rgba(234, 234, 234, 0.9) !important;
+        }
+        h3, h4, .o_web_studio_existing_fields_header {
+            color: rgb(183, 183, 183) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+        }
+    }
+
+    // ── STUDIO DARK: Home menu edit icon ──
+    .o_studio_home_menu .o_app .o_web_studio_edit_icon i {
+        background-color: var(--tf-primary) !important;
+        color: var(--tf-bg) !important;
     }
 
     // ── EE DM-9: Enterprise label ──
