@@ -77,49 +77,49 @@ class ResConfigSettings(models.TransientModel):
     tfe_preset = fields.Selection(
         [("indigo", "Indigo Pro"), ("emerald", "Emerald"), ("sand", "Sand")],
         string="Color Preset",
-        config_parameter="theme_flavor_enterprise.preset",
+        config_parameter="flavor_theme_enterprise.preset",
         default="indigo",
     )
     tfe_primary = fields.Char(
         string="Primary Color",
-        config_parameter="theme_flavor_enterprise.primary_color",
+        config_parameter="flavor_theme_enterprise.primary_color",
     )
     tfe_accent = fields.Char(
         string="Accent Color",
-        config_parameter="theme_flavor_enterprise.accent_color",
+        config_parameter="flavor_theme_enterprise.accent_color",
     )
     tfe_use_custom = fields.Boolean(
         string="Use Custom Colors",
-        config_parameter="theme_flavor_enterprise.use_custom",
+        config_parameter="flavor_theme_enterprise.use_custom",
         default=False,
     )
     tfe_density = fields.Selection(
         [("compact", "Compact"), ("comfortable", "Comfortable"), ("spacious", "Spacious")],
         string="List Density",
-        config_parameter="theme_flavor_enterprise.density",
+        config_parameter="flavor_theme_enterprise.density",
         default="comfortable",
     )
     tfe_zoom = fields.Integer(
         string="Zoom Level (%)",
-        config_parameter="theme_flavor_enterprise.zoom",
+        config_parameter="flavor_theme_enterprise.zoom",
         default=100,
     )
     tfe_font_heading = fields.Selection(
         GOOGLE_FONTS,
         string="Heading Font",
-        config_parameter="theme_flavor_enterprise.font_heading",
+        config_parameter="flavor_theme_enterprise.font_heading",
         default="Space Grotesk",
     )
     tfe_font_body = fields.Selection(
         GOOGLE_FONTS,
         string="Body Font",
-        config_parameter="theme_flavor_enterprise.font_body",
+        config_parameter="flavor_theme_enterprise.font_body",
         default="Manrope",
     )
     tfe_loader_style = fields.Selection(
         [("pulse", "Pulse Bar"), ("dots", "Bouncing Dots"), ("ring", "Spinner Ring")],
         string="Loading Animation",
-        config_parameter="theme_flavor_enterprise.loader_style",
+        config_parameter="flavor_theme_enterprise.loader_style",
         default="pulse",
     )
     tfe_login_bg = fields.Binary(
@@ -131,11 +131,11 @@ class ResConfigSettings(models.TransientModel):
     @api.model
     def get_theme_colors(self, mode="light"):
         ICP = self.env["ir.config_parameter"].sudo()
-        preset = ICP.get_param("theme_flavor_enterprise.preset", "indigo")
-        use_custom = ICP.get_param("theme_flavor_enterprise.use_custom", "False")
+        preset = ICP.get_param("flavor_theme_enterprise.preset", "indigo")
+        use_custom = ICP.get_param("flavor_theme_enterprise.use_custom", "False")
         if use_custom == "True":
-            primary = ICP.get_param("theme_flavor_enterprise.primary_color", "#4F46E5")
-            accent = ICP.get_param("theme_flavor_enterprise.accent_color", "#0EA5C4")
+            primary = ICP.get_param("flavor_theme_enterprise.primary_color", "#4F46E5")
+            accent = ICP.get_param("flavor_theme_enterprise.accent_color", "#0EA5C4")
             base = PRESETS.get(preset, PRESETS["indigo"])[mode].copy()
             base["primary"] = primary
             base["accent"] = accent
@@ -150,9 +150,9 @@ class ResConfigSettings(models.TransientModel):
     def get_enterprise_config(self):
         ICP = self.env["ir.config_parameter"].sudo()
         return {
-            "density": ICP.get_param("theme_flavor_enterprise.density", "comfortable"),
-            "zoom": int(ICP.get_param("theme_flavor_enterprise.zoom", "100")),
-            "font_heading": ICP.get_param("theme_flavor_enterprise.font_heading", "Space Grotesk"),
-            "font_body": ICP.get_param("theme_flavor_enterprise.font_body", "Manrope"),
-            "loader_style": ICP.get_param("theme_flavor_enterprise.loader_style", "pulse"),
+            "density": ICP.get_param("flavor_theme_enterprise.density", "comfortable"),
+            "zoom": int(ICP.get_param("flavor_theme_enterprise.zoom", "100")),
+            "font_heading": ICP.get_param("flavor_theme_enterprise.font_heading", "Space Grotesk"),
+            "font_body": ICP.get_param("flavor_theme_enterprise.font_body", "Manrope"),
+            "loader_style": ICP.get_param("flavor_theme_enterprise.loader_style", "pulse"),
         }

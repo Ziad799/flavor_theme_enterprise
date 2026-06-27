@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
                 <app data-string="Theme &amp; Appearance" string="Theme &amp; Appearance"
-                     name="theme_flavor_enterprise"
-                     logo="/theme_flavor_enterprise/static/description/icon.png">
+                     name="flavor_theme_enterprise"
+                     logo="/flavor_theme_enterprise/static/description/icon.png">
 
                     <block title="Color Presets"
                            help="Choose a preset or define custom Primary and Accent colors. Changes apply instantly.">

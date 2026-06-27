@@ -687,6 +687,92 @@ body.tf-dark {
         color: var(--tf-text-muted) !important;
     }
 
+    // ── EE DM-1: App icons white bg in dark ──
+    .o_app_icon,
+    .o_home_menu .o_app_icon,
+    .o_app.o_menuitem .o_app_icon {
+        background-color: var(--tf-surface) !important;
+        border: 1px solid var(--tf-border) !important;
+    }
+
+    // ── EE DM-2: ImStatus always white ──
+    .o-mail-ImStatus.bg-white,
+    .o-mail-ImStatus[class*="bg-white"] {
+        background-color: var(--tf-surface) !important;
+        border: 1px solid var(--tf-border) !important;
+    }
+
+    // ── EE DM-3: Calendar renderer hardcoded light bg ──
+    .o_calendar_renderer,
+    .o_calendar_renderer .fc-scroller-harness,
+    .o_calendar_renderer .o_actionswiper,
+    .o_calendar_renderer .o_calendar_widget {
+        background-color: var(--tf-bg) !important;
+        --fc-page-bg-color: var(--tf-bg) !important;
+        --fc-border-color: var(--tf-border) !important;
+    }
+
+    .o_calendar_renderer .o_calendar_widget .o_calendar_disabled {
+        background-color: rgba(39, 42, 60, 0.5) !important;
+    }
+
+    .o_calendar_renderer .fc-event {
+        --fc-event-text-color: var(--tf-text) !important;
+        --fc-event-bg-color: var(--tf-surface) !important;
+    }
+
+    .o_calendar_renderer .fc-event.o_past_event::after {
+        background-color: rgba(12, 13, 23, var(--o-overlay-opacity)) !important;
+    }
+
+    // ── EE DM-4: Bootstrap .text-primary not dark-aware ──
+    .text-primary,
+    .o_stat_button .fa.text-primary,
+    .o_stat_button i.text-primary,
+    a.text-primary {
+        color: var(--tf-primary) !important;
+    }
+
+    // ── EE DM-5: Alert-info (subscription banner) ──
+    .database_expiration_panel.alert-info,
+    .alert.alert-info {
+        background-color: rgba(14, 165, 196, 0.15) !important;
+        color: var(--tf-text) !important;
+        border-color: var(--tf-accent) !important;
+    }
+    .database_expiration_panel a,
+    .alert-info a {
+        color: var(--tf-accent) !important;
+    }
+
+    // ── EE DM-6: Alert-warning (Discuss new message) ──
+    .o-mail-Thread-bannerHover.alert-warning,
+    .alert.alert-warning {
+        background-color: rgba(251, 191, 36, 0.12) !important;
+        color: var(--tf-text) !important;
+        border-color: rgba(251, 191, 36, 0.4) !important;
+    }
+
+    // ── EE DM-7: Discuss notification bar ──
+    .o-mail-Thread-newMessage,
+    .o-mail-Thread-bannerHover {
+        background-color: rgba(130, 135, 255, 0.1) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // ── EE DM-8: Bottom-sheet box-shadow dark ──
+    .bottom-sheet-open:not(.o_home_menu_background) .o_main_navbar {
+        box-shadow:
+            var(--tf-surface) 20px 0px 0px,
+            var(--tf-surface) -20px 0px 0px !important;
+    }
+
+    // ── EE DM-9: Enterprise label ──
+    .o_enterprise_label {
+        background-color: var(--tf-primary) !important;
+        color: var(--tf-on-primary) !important;
+    }
+
     // === Scrollbar ===
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--tf-bg); }

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="tfe_preset_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.preset</field>
+        <field name="key">flavor_theme_enterprise.preset</field>
         <field name="value">indigo</field>
     </record>
     <record id="tfe_use_custom_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.use_custom</field>
+        <field name="key">flavor_theme_enterprise.use_custom</field>
         <field name="value">False</field>
     </record>
     <record id="tfe_density_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.density</field>
+        <field name="key">flavor_theme_enterprise.density</field>
         <field name="value">comfortable</field>
     </record>
     <record id="tfe_zoom_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.zoom</field>
+        <field name="key">flavor_theme_enterprise.zoom</field>
         <field name="value">100</field>
     </record>
     <record id="tfe_font_heading_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.font_heading</field>
+        <field name="key">flavor_theme_enterprise.font_heading</field>
         <field name="value">Space Grotesk</field>
     </record>
     <record id="tfe_font_body_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.font_body</field>
+        <field name="key">flavor_theme_enterprise.font_body</field>
         <field name="value">Manrope</field>
     </record>
     <record id="tfe_loader_default" model="ir.config_parameter">
-        <field name="key">theme_flavor_enterprise.loader_style</field>
+        <field name="key">flavor_theme_enterprise.loader_style</field>
         <field name="value">pulse</field>
     </record>
 </odoo>

@@ -443,3 +443,69 @@
 .o_web_client .o_graph_renderer {
     border-color: var(--tf-border) !important;
 }
+
+// ── EE FIX 1: Navbar header wrapper transparent bg ──
+.o_navbar {
+    background-color: transparent !important;
+}
+
+// ── EE FIX 2: Bootstrap .text-primary must use theme token ──
+.text-primary,
+.o_stat_button .fa.text-primary,
+.o_stat_button i.text-primary {
+    color: var(--tf-primary) !important;
+}
+
+// ── EE FIX 3: Hidden search input white bg ──
+.o_search_hidden,
+input.o_search_hidden {
+    background-color: var(--tf-surface) !important;
+}
+
+// ── EE FIX 4: Searchview focus border ──
+.o_searchview.form-control:focus-within {
+    border-color: var(--tf-primary) !important;
+    box-shadow: 0 0 0 2px var(--tf-primary-soft) !important;
+}
+
+// ── EE FIX 5: White strip inside focused searchview ──
+.o_searchview .position-absolute.start-0.top-0.bottom-0 {
+    background-color: var(--tf-surface) !important;
+}
+
+// ── EE FIX 6: Expiration banner links ──
+.database_expiration_panel a,
+.oe_instance_register a,
+.oe_instance_buy {
+    color: var(--tf-primary) !important;
+    border-color: var(--tf-primary) !important;
+}
+
+// ── EE FIX 7: App icons white bg ──
+.o_home_menu .o_app_icon,
+.o_app.o_menuitem .o_app_icon {
+    background-color: var(--tf-surface) !important;
+}
+
+// ── EE FIX 8: Calendar renderer hardcoded bg ──
+.o_calendar_renderer {
+    background-color: var(--tf-surface) !important;
+
+    .o_calendar_widget {
+        --fc-page-bg-color: var(--tf-surface) !important;
+        --o-cw-border-color: var(--tf-border) !important;
+    }
+}
+
+// ── EE FIX 9: Bottom-sheet box-shadow ──
+.bottom-sheet-open:not(.o_home_menu_background) .o_main_navbar {
+    box-shadow:
+        var(--tf-surface) 20px 0px 0px,
+        var(--tf-surface) -20px 0px 0px !important;
+}
+
+// ── EE FIX 10: Home menu Odoo 19 selector ──
+.o_home_menu_background .o_home_menu,
+.o_home_menu_background .o_home_menu.h-100.overflow-auto {
+    background-color: var(--tf-bg) !important;
+}

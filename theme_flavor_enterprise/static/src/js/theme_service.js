@@ -83,7 +83,7 @@ const themeFlavorEnterpriseService = {
             const result = await rpc(
                 "/web/dataset/call_kw/ir.config_parameter/get_param",
                 { model: "ir.config_parameter", method: "get_param",
-                  args: ["theme_flavor_enterprise.preset", "indigo"], kwargs: {} }
+                  args: ["flavor_theme_enterprise.preset", "indigo"], kwargs: {} }
             );
             if (result) preset = result;
         } catch {}
@@ -186,4 +186,4 @@ const themeFlavorEnterpriseService = {
     },
 };
 
-registry.category("services").add("theme_flavor_enterprise", themeFlavorEnterpriseService);
+registry.category("services").add("flavor_theme_enterprise", themeFlavorEnterpriseService);

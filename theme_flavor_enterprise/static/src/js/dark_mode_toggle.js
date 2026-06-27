@@ -8,7 +8,7 @@ class DarkModeToggle extends Component {
     static template = "tfe.DarkModeToggle";
 
     setup() {
-        this.themeService = useService("theme_flavor_enterprise");
+        this.themeService = useService("flavor_theme_enterprise");
     }
 
     get isDark() {

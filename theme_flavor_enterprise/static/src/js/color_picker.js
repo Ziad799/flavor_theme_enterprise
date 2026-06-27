@@ -10,7 +10,7 @@ class ThemeColorPicker extends Component {
     static props = { ...standardFieldProps };
 
     setup() {
-        this.themeService = useService("theme_flavor_enterprise");
+        this.themeService = useService("flavor_theme_enterprise");
         this.state = useState({
             selectedPreset: this.themeService.getPreset(),
             previewMode: this.themeService.isDark() ? "dark" : "light",
