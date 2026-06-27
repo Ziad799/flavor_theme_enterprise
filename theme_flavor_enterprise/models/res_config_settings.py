@@ -124,7 +124,8 @@ class ResConfigSettings(models.TransientModel):
     )
     tfe_login_bg = fields.Binary(
         string="Login Background Image",
-        attachment=True,
+        related="company_id.tfe_login_bg",
+        readonly=False,
     )
 
     @api.model

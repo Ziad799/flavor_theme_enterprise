@@ -17,8 +17,6 @@ export class TFESidebar extends Component {
             collapsed: false,
             showAppsGrid: true,
             currentAppId: null,
-            searchQuery: "",
-            searchResults: [],
             bookmarks: [],
         });
         this.userId = user.userId;
@@ -68,8 +66,6 @@ export class TFESidebar extends Component {
     onAppClick(app) {
         this.state.showAppsGrid = true;
         this.state.currentAppId = app.id;
-        this.state.searchQuery = "";
-        this.state.searchResults = [];
         this.menuService.selectMenu(app);
     }
 
@@ -92,32 +88,8 @@ export class TFESidebar extends Component {
         window.location.href = "/web/session/logout";
     }
 
-    // Search
-    onSearchInput(ev) {
-        const query = ev.target.value.trim().toLowerCase();
-        this.state.searchQuery = query;
-        if (!query) { this.state.searchResults = []; return; }
-        const results = [];
-        const tree = this.menuService.getMenuAsTree("root");
-        this._searchTree(tree, query, results);
-        this.state.searchResults = results.slice(0, 15);
-    }
-
-    _searchTree(node, query, results) {
-        if (node.name && node.name.toLowerCase().includes(query) && node.actionID) {
-            results.push({ id: node.id, name: node.name, actionID: node.actionID });
-        }
-        if (node.childrenTree) {
-            for (const child of node.childrenTree) {
-                this._searchTree(child, query, results);
-            }
-        }
-    }
-
-    onSearchResultClick(item) {
-        this.state.searchQuery = "";
-        this.state.searchResults = [];
-        this.menuService.selectMenu(item);
+    onSearchClick() {
+        document.dispatchEvent(new CustomEvent("tfe-open-palette"));
     }
 
     // Bookmarks

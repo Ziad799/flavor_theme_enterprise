@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates xml:space="preserve">
 
+    <!-- Command Palette (Enterprise-style global search) -->
+    <t t-name="tfe.CommandPalette">
+        <t t-if="state.isOpen">
+            <div class="tfe-palette-overlay" t-on-click="onOverlayClick">
+                <div class="tfe-palette">
+                    <div class="tfe-palette__input-wrap">
+                        <span class="tfe-palette__slash">/</span>
+                        <input t-ref="searchInput"
+                               class="tfe-palette__input"
+                               type="text"
+                               placeholder="Search menus, settings, reports..."
+                               t-on-input="onInput"
+                               t-att-value="state.query"
+                               autocomplete="off"
+                               spellcheck="false"/>
+                        <i class="fa fa-search tfe-palette__search-icon"/>
+                    </div>
+                    <t t-if="state.results.length">
+                        <div class="tfe-palette__results">
+                            <t t-foreach="state.results" t-as="item" t-key="item.id">
+                                <div t-attf-class="tfe-palette__result {{ item_index === state.selectedIndex ? 'selected' : '' }}"
+                                     t-on-click="() => this.onResultClick(item)"
+                                     t-on-mouseenter="() => this.state.selectedIndex = item_index">
+                                    <span class="tfe-palette__result-path"><t t-out="highlightMatch(item.path)"/></span>
+                                    <div class="tfe-palette__result-actions">
+                                        <span class="tfe-palette__kbd">ENTER</span>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-elif="state.query and !state.results.length">
+                        <div class="tfe-palette__empty">
+                            No results for "<t t-esc="state.query"/>"
+                        </div>
+                    </t>
+                    <div class="tfe-palette__footer">
+                        <span class="tfe-palette__tip">TIP</span> — open me anywhere with
+                        <span class="tfe-palette__kbd">CONTROL</span> +
+                        <span class="tfe-palette__kbd">K</span>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+
     <!-- Dark Mode Toggle in Systray -->
     <t t-name="tfe.DarkModeToggle">
         <div class="o_nav_entry d-flex align-items-center px-2" style="cursor: pointer;"
@@ -41,30 +87,15 @@
                 </t>
             </div>
 
-            <!-- Search bar -->
-            <t t-if="!state.collapsed">
-                <div class="tf-sidebar__search-wrap">
-                    <i class="fa fa-search tf-sidebar__search-icon"/>
-                    <input class="tf-sidebar__search"
-                           type="text"
-                           placeholder="Search menus..."
-                           t-on-input="onSearchInput"
-                           t-att-value="state.searchQuery"/>
-                </div>
-                <!-- Search results -->
-                <t t-if="state.searchResults.length">
-                    <div class="tf-sidebar__search-results">
-                        <t t-foreach="state.searchResults" t-as="item" t-key="item.id">
-                            <a class="tf-sidebar__search-result"
-                               href="#"
-                               t-on-click.prevent="() => this.onSearchResultClick(item)">
-                                <i class="fa fa-angle-right"/>
-                                <span t-esc="item.name"/>
-                            </a>
-                        </t>
-                    </div>
+            <!-- Global Search (opens Odoo command palette) -->
+            <div class="tf-sidebar__search-wrap" t-on-click="onSearchClick"
+                 title="Search everything (Ctrl+K)">
+                <i class="fa fa-search tf-sidebar__search-icon"/>
+                <t t-if="!state.collapsed">
+                    <span class="tf-sidebar__search-placeholder">Search...</span>
+                    <span class="tf-sidebar__search-shortcut">Ctrl+K</span>
                 </t>
-            </t>
+            </div>
 
             <!-- Bookmarks section -->
             <t t-if="state.bookmarks.length and !state.searchQuery">

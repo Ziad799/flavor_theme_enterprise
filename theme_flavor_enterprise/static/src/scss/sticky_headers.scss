@@ -1,8 +1,11 @@
 // Theme Flavor Enterprise — Sticky Headers
 // Sticky column headers, form statusbar, and chatter top
 
-// List view — sticky column headers
+// List view — enable scrolling + sticky column headers
 .o_web_client .o_list_view .o_list_renderer {
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+
     .o_list_table thead {
         position: sticky;
         top: 0;

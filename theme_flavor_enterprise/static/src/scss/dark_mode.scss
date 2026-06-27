@@ -459,11 +459,51 @@ body.tf-dark {
         color: var(--tf-text) !important;
     }
 
+    // Message bubbles — white/light bg in dark mode
+    .o-mail-Message-bubble,
+    .o-mail-Message-content,
+    .o-mail-Message .o-mail-Message-bubble,
+    .o-mail-Message-prettyBody,
+    .o-mail-Message-body .o_mail_notification,
+    .o-mail-Message .rounded-bottom-3,
+    .o-mail-Message .bg-100,
+    .o-mail-Message [class*="bg-"],
+    .o_mail_note_body,
+    .o-mail-Message-textContent {
+        background-color: var(--tf-surface-2) !important;
+        background: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // Chatter note/message card backgrounds
+    .o-mail-Message .card,
+    .o-mail-Message .o_mail_note_body,
+    .o-mail-Chatter .o-mail-Message-bubble {
+        background-color: var(--tf-surface-2) !important;
+        border-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
     .o-mail-Message-date,
     .text-muted { color: var(--tf-text-muted) !important; }
 
     .o_odoobot_command {
         background-color: var(--tf-surface-2) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // Discuss message bubbles
+    .o-mail-Message-bubble,
+    .o-mail-Message .rounded-bottom-3,
+    .o-mail-Message .rounded-3,
+    .o-mail-Message-prettyBody,
+    .o-mail-Message-textContent,
+    .o-mail-Message .bg-100,
+    .o-mail-Message .bg-white,
+    .o-mail-Message [class*="bg-view"],
+    .o-mail-Message [class*="bg-100"] {
+        background-color: var(--tf-surface-2) !important;
+        background: var(--tf-surface-2) !important;
         color: var(--tf-text) !important;
     }
 
