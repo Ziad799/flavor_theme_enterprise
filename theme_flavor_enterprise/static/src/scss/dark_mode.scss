@@ -785,6 +785,64 @@ body.tf-dark {
             var(--tf-surface) -20px 0px 0px !important;
     }
 
+    // ── STUDIO DARK: Header/toolbar bar ──
+    .o_web_studio_editor_manager .o_web_studio_navbar,
+    .o_web_studio_editor_manager > header,
+    .o_web_studio_editor_manager .o_studio_navbar,
+    .o_web_studio_navbar,
+    .o_studio .o_navbar,
+    .o_studio header,
+    .o_web_studio_client_action > header,
+    .o_web_studio_editor_manager .o_web_studio_menu,
+    .o_web_studio_editor_manager nav {
+        background-color: var(--tf-surface) !important;
+        border-bottom-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+    }
+
+    // Studio toolbar buttons and links
+    .o_web_studio_editor_manager .o_web_studio_menu a,
+    .o_web_studio_editor_manager .o_web_studio_menu button,
+    .o_web_studio_editor_manager .o_web_studio_menu span,
+    .o_web_studio_navbar a,
+    .o_web_studio_navbar button,
+    .o_web_studio_navbar span,
+    .o_studio header a,
+    .o_studio header button {
+        color: var(--tf-text-muted) !important;
+
+        &:hover { color: var(--tf-primary) !important; }
+        &.active { color: var(--tf-primary) !important; }
+    }
+
+    // Studio "Close" button stays themed
+    .o_web_studio_leave .btn-primary,
+    .o_web_studio_editor_manager .o_web_studio_leave .btn {
+        background-color: var(--tf-primary) !important;
+        border-color: var(--tf-primary) !important;
+        color: var(--tf-on-primary) !important;
+    }
+
+    // Studio breadcrumb bar (VIEWS > LIST)
+    .o_web_studio_editor_manager .o_web_studio_breadcrumb,
+    .o_web_studio_breadcrumb {
+        background-color: var(--tf-surface-2) !important;
+        border-bottom-color: var(--tf-border) !important;
+        color: var(--tf-text) !important;
+
+        a, span, .breadcrumb-item { color: var(--tf-text-muted) !important; }
+        a:hover { color: var(--tf-primary) !important; }
+    }
+
+    // Studio view tabs (Add, View, Properties)
+    .o_web_studio_sidebar .nav-link {
+        color: var(--tf-text-muted) !important;
+        &.active {
+            color: var(--tf-primary) !important;
+            border-bottom-color: var(--tf-primary) !important;
+        }
+    }
+
     // ── STUDIO DARK: Component tiles white in dark mode ──
     .o_web_studio_component.bg-light,
     .o_web_studio_component.o_web_studio_icon_container {

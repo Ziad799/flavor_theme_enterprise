@@ -545,7 +545,40 @@ body.o_in_studio .o_studio {
     margin-left: 0 !important;
 }
 
-// STUDIO FIX 6: Studio sidebar nav-tabs bg
+// STUDIO FIX 6: Studio editor toolbar theming (NOT header.o_navbar or .o_studio header)
+body.o_in_studio .o_web_studio_editor_manager .o_web_studio_navbar,
+body.o_in_studio .o_web_studio_editor_manager > header,
+body.o_in_studio .o_web_studio_navbar,
+body.o_in_studio .o_web_studio_editor_manager .o_web_studio_menu,
+body.o_in_studio .o_web_studio_editor_manager nav {
+    background-color: var(--tf-surface) !important;
+    border-bottom: 1px solid var(--tf-border) !important;
+}
+
+// STUDIO FIX 6a: header.o_navbar wrapper must be transparent (Studio nav has its own bg)
+body.o_in_studio .o_studio header.o_navbar,
+body.o_in_studio .o_studio .o_navbar {
+    background: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+// STUDIO FIX 6b: Let Studio's dark navbar (rgb(38,44,52)) win over our --tf-surface
+body.o_in_studio .o_studio .o_main_navbar,
+body.o_in_studio .o_studio nav.o_main_navbar,
+body.o_in_studio .o_studio .o_studio_navbar {
+    background: rgb(38, 44, 52) !important;
+    border-bottom-color: rgb(38, 44, 52) !important;
+    box-shadow: none !important;
+}
+
+// Studio breadcrumb bar
+body.o_in_studio .o_web_studio_breadcrumb {
+    background-color: var(--tf-surface-2) !important;
+    border-bottom: 1px solid var(--tf-border) !important;
+}
+
+// STUDIO FIX 7: Studio sidebar nav-tabs bg
 body.o_in_studio .o_web_studio_sidebar .nav.nav-tabs {
     background-color: rgb(58, 63, 70) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
