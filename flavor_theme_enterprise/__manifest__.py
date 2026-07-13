@@ -5,7 +5,7 @@
     "summary": "Premium backend theme with 3 presets, dark mode, persistent sidebar, sticky headers, RTL, Google Fonts, zoom, bookmarks, custom login, and more",
     "description": "",
     "author": "Elata79",
-    "website": "",
+    "website": "mailto:ziadelata@gmail.com",
     "license": "OPL-1",
     "price": 39.99,
     "currency": "USD",
